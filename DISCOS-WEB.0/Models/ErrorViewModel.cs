@@ -1,4 +1,4 @@
-namespace DISCOS_WEB.Models
+namespace WEB_DISCOS__.Models
 {
     public class ErrorViewModel
     {

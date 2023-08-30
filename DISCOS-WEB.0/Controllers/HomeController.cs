@@ -1,8 +1,8 @@
-﻿using DISCOS_WEB.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WEB_DISCOS__.Models;
 
-namespace DISCOS_WEB.Controllers
+namespace WEB_DISCOS__.Controllers
 {
     public class HomeController : Controller
     {

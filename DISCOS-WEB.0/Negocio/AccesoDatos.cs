@@ -7,20 +7,51 @@ using System.Data.SqlClient;
 
 namespace Negocio
 {
-    internal class AccesoDatos
+    public class AccesoDatos
     {
-        public SqlConnection connection;
+        private SqlConnection conexion;
 
-        public SqlCommand command;
+        private SqlCommand comando;
 
-        public SqlDataReader reader;
+        private SqlDataReader lector;
 
-        public SqlDataReader Reader
-        { get { return reader; } }
+        public SqlDataReader Lector
+        { get { return lector; } }
 
         public AccesoDatos()
         {
-            connection = new SqlConnection();
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=DISCOS-DB; integrated security=true");
+            comando = new SqlCommand();
+        }
+
+        public void set(string consulta)
+        {
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = consulta;
+        }
+
+        public void ejecutar()
+        {
+            comando.Connection = conexion;
+            conexion.Open();
+            try
+            {
+                lector = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void cerrar()
+        {
+            if (lector != null)
+            {
+                lector.Close();
+            }
+            conexion.Close();
         }
 
     }
